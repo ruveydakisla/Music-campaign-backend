@@ -11,7 +11,7 @@ import {
 
 const campaignController = express.Router();
 //POST -> create
-campaignController.post("/campaigns", async (req: Request, res: Response) => {
+campaignController.post("", async (req: Request, res: Response) => {
   try {
     const newCampaign = await createCampaign(req.body);
     res.status(201).json(successResponse<InsertCampaign>(newCampaign));
@@ -26,7 +26,7 @@ campaignController.post("/campaigns", async (req: Request, res: Response) => {
   }
 });
 //GET -> get all
-campaignController.get("/campaigns", async (req: Request, res: Response) => {
+campaignController.get("", async (req: Request, res: Response) => {
   try {
     const campaigns = await getAllCampaigns();
     res.status(200).json(successResponse<SelectCampaign[]>(campaigns));
@@ -40,7 +40,7 @@ campaignController.get("/campaigns", async (req: Request, res: Response) => {
 });
 //GET -> get by id
 campaignController.get(
-  "/campaigns/:id",
+  "/:id",
   async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
@@ -63,7 +63,7 @@ campaignController.get(
 );
 //PUT ->update by id
 campaignController.put(
-  "/campaigns/:id",
+  "/:id",
   async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
@@ -86,7 +86,7 @@ campaignController.put(
 );
 //DELETE ->delete by id
 campaignController.delete(
-  "/campaigns/:id",
+  "/:id",
   async (req: Request, res: Response) => {
     const { id } = req.params;
     try {
